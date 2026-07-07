@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>XX Aniversario Signus</title>
+<title>Save The Date | XX Aniversario Signus</title>
 
 <style>
 
@@ -25,41 +26,39 @@ body{
 }
 
 .card{
-    width:380px;
-    background:white;
+    width:390px;
+    background:#fff;
     border-radius:18px;
     padding:35px;
-    box-shadow:0 10px 35px rgba(0,0,0,.12);
     text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.15);
 }
 
 h1{
+    font-size:28px;
     color:#333;
     margin-bottom:10px;
-    font-size:28px;
 }
 
 p{
     color:#666;
     margin-bottom:30px;
-    line-height:1.5;
 }
 
 button{
     width:100%;
-    background:#1a73e8;
-    color:white;
-    border:none;
     padding:16px;
-    border-radius:12px;
     font-size:18px;
+    border:none;
+    border-radius:12px;
+    background:#1a73e8;
+    color:#fff;
     cursor:pointer;
     transition:.25s;
 }
 
 button:hover{
-    transform:translateY(-2px);
-    box-shadow:0 6px 18px rgba(0,0,0,.2);
+    background:#1669c8;
 }
 
 .menu{
@@ -76,17 +75,16 @@ button:hover{
     border-radius:10px;
     margin-bottom:10px;
     transition:.2s;
-    font-weight:500;
 }
 
 .menu a:hover{
-    background:#e5e7eb;
+    background:#e6e8eb;
 }
 
 .footer{
     margin-top:25px;
-    font-size:13px;
     color:#999;
+    font-size:13px;
 }
 
 </style>
@@ -97,64 +95,95 @@ button:hover{
 
 <div class="card">
 
-<h1>✨ XX Aniversario Signus</h1>
+<h1> XX Aniversario Signus</h1>
 
 <p>Guarda el evento en tu calendario favorito.</p>
 
-<button onclick="mostrarMenu()">
+<button id="btnCalendario">
 📅 Guardar en mi calendario
 </button>
 
-<div class="menu" id="menu">
+<div id="menu" class="menu">
 
-<a id="google" target="_blank">
-🟢 Google Calendar
+<a id="google" href="#" target="_blank">
+ Google Calendar
 </a>
 
-<a id="office" target="_blank">
-🔵 Office 365 (Outlook)
+<a id="office" href="#" target="_blank">
+ Office 365 (Outlook)
 </a>
 
 <a href="AniversarioSignus.ics">
-🍎 Apple Calendar / iPhone / Mac
+ Apple Calendar / iPhone / Mac
 </a>
 
-<a id="yahoo" target="_blank">
-🟣 Yahoo Calendar
+<a id="yahoo" href="#" target="_blank">
+ Yahoo Calendar
 </a>
 
 </div>
 
 <div class="footer">
-Nos vemos el 15 de octubre ✨
+¡Nos vemos el 15 de octubre!
 </div>
 
 </div>
 
 <script>
 
-const titulo="XX Aniversario Signus";
-const descripcion="XX Aniversario Signus";
-const lugar="El Espacio TorreLara";
+const titulo = "XX Aniversario Signus";
+const descripcion = "XX Aniversario Signus";
+const lugar = "El Espacio TorreLara";
 
-const inicio="20261015T190000";
-const fin="20261015T230000";
+const inicio = "20261015T190000";
+const fin = "20261015T230000";
+
+// GOOGLE
 
 document.getElementById("google").href =
-⁠ https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo)}&dates=${inicio}/${fin}&details=${encodeURIComponent(descripcion)}&location=${encodeURIComponent(lugar)} ⁠;
+"https://calendar.google.com/calendar/render?action=TEMPLATE"
++"&text="+encodeURIComponent(titulo)
++"&dates="+inicio+"/"+fin
++"&details="+encodeURIComponent(descripcion)
++"&location="+encodeURIComponent(lugar);
+
+// OFFICE 365
 
 document.getElementById("office").href =
-⁠ https://outlook.office.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(titulo)}&startdt=2026-10-15T19:00:00&enddt=2026-10-15T23:00:00&body=${encodeURIComponent(descripcion)}&location=${encodeURIComponent(lugar)} ⁠;
+"https://outlook.office.com/calendar/0/deeplink/compose"
++"?subject="+encodeURIComponent(titulo)
++"&startdt=2026-10-15T19:00:00"
++"&enddt=2026-10-15T23:00:00"
++"&body="+encodeURIComponent(descripcion)
++"&location="+encodeURIComponent(lugar);
+
+// YAHOO
 
 document.getElementById("yahoo").href =
-⁠ https://calendar.yahoo.com/?v=60&view=d&type=20&title=${encodeURIComponent(titulo)}&st=20261015T190000&et=20261015T230000&desc=${encodeURIComponent(descripcion)}&in_loc=${encodeURIComponent(lugar)} ⁠;
+"https://calendar.yahoo.com/?v=60&view=d&type=20"
++"&title="+encodeURIComponent(titulo)
++"&st=20261015T190000"
++"&et=20261015T230000"
++"&desc="+encodeURIComponent(descripcion)
++"&in_loc="+encodeURIComponent(lugar);
 
-function mostrarMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = (menu.style.display === "block") ? "none" : "block";
-}
+// DESPLEGAR MENÚ
+
+const boton = document.getElementById("btnCalendario");
+const menu = document.getElementById("menu");
+
+boton.addEventListener("click", function(){
+
+    if(menu.style.display==="block"){
+        menu.style.display="none";
+    }else{
+        menu.style.display="block";
+    }
+
+});
 
 </script>
 
 </body>
+
 </html>

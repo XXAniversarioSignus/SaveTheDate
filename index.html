@@ -3,89 +3,158 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Añadir al calendario - XX Aniversario Signus</title>
+
+<title>XX Aniversario Signus</title>
 
 <style>
-    body{
-        font-family: Arial, Helvetica, sans-serif;
-        background:#f4f4f4;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        height:100vh;
-        margin:0;
-    }
 
-    .card{
-        background:#fff;
-        padding:40px;
-        border-radius:12px;
-        box-shadow:0 10px 30px rgba(0,0,0,.12);
-        text-align:center;
-        width:420px;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-    h1{
-        margin-top:0;
-        font-size:28px;
-    }
+body{
+    background:#f5f6fa;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
 
-    p{
-        color:#666;
-        margin-bottom:30px;
-    }
+.card{
+    width:380px;
+    background:white;
+    border-radius:18px;
+    padding:35px;
+    box-shadow:0 10px 35px rgba(0,0,0,.12);
+    text-align:center;
+}
 
-    a{
-        display:block;
-        margin:15px 0;
-        padding:15px;
-        border-radius:8px;
-        color:white;
-        text-decoration:none;
-        font-weight:bold;
-        transition:.2s;
-    }
+h1{
+    color:#333;
+    margin-bottom:10px;
+    font-size:28px;
+}
 
-    a:hover{
-        transform:translateY(-2px);
-    }
+p{
+    color:#666;
+    margin-bottom:30px;
+    line-height:1.5;
+}
 
-    .google{background:#4285F4;}
-    .outlook{background:#0078D4;}
-    .apple{background:#333;}
+button{
+    width:100%;
+    background:#1a73e8;
+    color:white;
+    border:none;
+    padding:16px;
+    border-radius:12px;
+    font-size:18px;
+    cursor:pointer;
+    transition:.25s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 18px rgba(0,0,0,.2);
+}
+
+.menu{
+    display:none;
+    margin-top:20px;
+}
+
+.menu a{
+    display:block;
+    text-decoration:none;
+    color:#333;
+    background:#f3f4f6;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:10px;
+    transition:.2s;
+    font-weight:500;
+}
+
+.menu a:hover{
+    background:#e5e7eb;
+}
+
+.footer{
+    margin-top:25px;
+    font-size:13px;
+    color:#999;
+}
+
 </style>
 
 </head>
+
 <body>
 
 <div class="card">
 
-<h1>📅 XX Aniversario Signus</h1>
+<h1>✨ XX Aniversario Signus</h1>
 
-<p>
-15 de octubre de 2026<br>
-19:00 – 23:00<br>
-Espacio Torrelara
-</p>
+<p>Guarda el evento en tu calendario favorito.</p>
 
-<a class="google"
-href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=XX%20Aniversario%20Signus&dates=20261015T170000Z/20261015T210000Z&location=Espacio%20Torrelara"
-target="_blank">
-Añadir a Google Calendar
+<button onclick="mostrarMenu()">
+📅 Guardar en mi calendario
+</button>
+
+<div class="menu" id="menu">
+
+<a id="google" target="_blank">
+🟢 Google Calendar
 </a>
 
-<a class="outlook"
-href="https://outlook.live.com/calendar/0/deeplink/compose?subject=XX%20Aniversario%20Signus&startdt=2026-10-15T19:00:00&enddt=2026-10-15T23:00:00&location=Espacio%20Torrelara"
-target="_blank">
-Añadir a Outlook
+<a id="office" target="_blank">
+🔵 Office 365 (Outlook)
 </a>
 
-<a class="apple"
-href="AniversarioSignus.ics">
-Descargar para Apple Calendar / Outlook (.ics)
+<a href="AniversarioSignus.ics">
+🍎 Apple Calendar / iPhone / Mac
+</a>
+
+<a id="yahoo" target="_blank">
+🟣 Yahoo Calendar
 </a>
 
 </div>
+
+<div class="footer">
+Nos vemos el 15 de octubre ✨
+</div>
+
+</div>
+
+<script>
+
+const titulo="XX Aniversario Signus";
+const descripcion="XX Aniversario Signus";
+const lugar="El Espacio TorreLara";
+
+const inicio="20261015T190000";
+const fin="20261015T230000";
+
+document.getElementById("google").href =
+⁠ https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo)}&dates=${inicio}/${fin}&details=${encodeURIComponent(descripcion)}&location=${encodeURIComponent(lugar)} ⁠;
+
+document.getElementById("office").href =
+⁠ https://outlook.office.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(titulo)}&startdt=2026-10-15T19:00:00&enddt=2026-10-15T23:00:00&body=${encodeURIComponent(descripcion)}&location=${encodeURIComponent(lugar)} ⁠;
+
+document.getElementById("yahoo").href =
+⁠ https://calendar.yahoo.com/?v=60&view=d&type=20&title=${encodeURIComponent(titulo)}&st=20261015T190000&et=20261015T230000&desc=${encodeURIComponent(descripcion)}&in_loc=${encodeURIComponent(lugar)} ⁠;
+
+function mostrarMenu() {
+    const menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+}
+
+</script>
 
 </body>
 </html>
